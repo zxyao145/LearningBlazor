@@ -1,0 +1,52 @@
+﻿@page "/"
+@inject IJSRuntime JsRuntime
+
+
+<div class="jumbotron bg-white border border-primary">
+    <h5>C#与JS互操作</h5>
+    <div>
+        <button @onclick="OnClick" class="btn btn-primary">交互</button>
+        <button @onclick="OnClick2" class="btn btn-primary">交互2</button>
+    </div>
+</div>
+
+@code{
+
+    private async Task OnClick(MouseEventArgs e)
+    {
+        Console.WriteLine("OnClick is executing");
+        var name = "world";
+        var a = 11;
+        var b = 22;
+        var jsRunResult =
+            await JsRuntime.InvokeAsync<string>("interop.runJs", name, a, b);
+        Console.WriteLine($"interop.runJs return：{jsRunResult}");
+    }
+
+    [JSInvokable]
+    public static Task<int> Sum(int a, int b)
+    {
+        Console.WriteLine("Sum is executing");
+        return Task.FromResult(a + b);
+    }
+
+    private void OnClick2()
+    {
+        IJSInProcessRuntime SyncJsRuntime = 
+            JsRuntime as IJSInProcessRuntime;
+        var a = 11;
+        var b = 22;
+        var jsRunResult = SyncJsRuntime.Invoke<string>("interop.runJs2",
+        DotNetObjectReference.Create(this),
+        a, b);
+        Console.WriteLine($"interop.runJs2 return：{jsRunResult}");
+    }
+
+    [JSInvokable]
+    public int Multiply(int a, int b)
+    {
+        Console.WriteLine("Multiply is executing");
+        return a * b;
+    }
+
+}
