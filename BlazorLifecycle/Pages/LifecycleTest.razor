@@ -1,0 +1,92 @@
+﻿@implements IDisposable
+<h3>LifecycleTest,Title:@Title</h3>
+<p>Current count: @currentCount</p>
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-secondary" @onclick="NotifyStateHasChanged">NotifyStateHasChanged</button>
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; }
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    void NotifyStateHasChanged()
+    {
+        Console.WriteLine("NotifyStateHasChanged");
+        StateHasChanged();
+    }
+
+    #region 初始化组件
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("OnInitialized");
+        base.OnInitialized();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        Console.WriteLine("OnInitializedAsync");
+        return base.OnInitializedAsync();
+    }
+    #endregion
+
+    /// <summary>
+    /// 设置参数前
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        Console.WriteLine("SetParametersAsync");
+        return base.SetParametersAsync(parameters);
+    }
+
+    #region 设置参数之后
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("OnParametersSet");
+        base.OnParametersSet();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        Console.WriteLine("OnParametersSetAsync");
+        return base.OnParametersSetAsync();
+    }
+    #endregion
+
+    #region 组件呈现之后
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"OnAfterRender, firstRender:{firstRender}");
+        base.OnAfterRender(firstRender);
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        Console.WriteLine($"OnAfterRenderAsync, firstRender:{firstRender}");
+        return base.OnAfterRenderAsync(firstRender);
+    }
+    #endregion
+
+    /// <summary>
+    /// 是否渲染组件
+    /// </summary>
+    /// <returns></returns>
+    protected override bool ShouldRender()
+    {
+        Console.WriteLine("ShouldRender");
+        return true;
+    }
+
+    public void Dispose()
+    {
+        Console.WriteLine("Dispose");
+    }
+}

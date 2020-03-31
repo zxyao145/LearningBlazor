@@ -1,0 +1,17 @@
+﻿@page "/counter"
+
+<button class="btn btn-warning" @onclick="ChangeParamter">ChangeParamter</button>
+
+<LifecycleTest Title="@title"></LifecycleTest>
+
+@code {
+
+    string title = "here is the title parameter";
+
+
+    void ChangeParamter()
+    {
+        title = DateTime.Now.ToString("o");
+    }
+
+}
