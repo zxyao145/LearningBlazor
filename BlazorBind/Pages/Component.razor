@@ -1,0 +1,41 @@
+﻿<h5>默认绑定</h5>
+<input @bind="_bindValue1" />
+<p>@_bindValue1</p>
+
+<input value="@_bindValue1" @onchange="(e) => { _bindValue1 = int.TryParse(e.Value.ToString(), out var val) ? val : _bindValue1; StateHasChanged(); Console.WriteLine(_bindValue1); }" />
+<hr />
+
+<h5>修改bind事件</h5>
+
+<input @bind="_bindValue2" @bind:event="oninput" />
+<p>@_bindValue2</p>
+
+<hr />
+
+<h5>组件之间绑定</h5>
+<input @bind="DateTime" @bind:format="yyyy-MM-dd HH:mm:ss" @oninput="ChangeParentValue" />
+<p>@DateTime.ToString("o")</p>
+@code{
+    private int _bindValue1 { get; set; } = 1;
+
+    private string _bindValue2 { get; set; }
+
+    [Parameter]
+    public DateTime DateTime { get; set; } = DateTime.Now;
+    /// <summary>
+    /// 使用bind赋值，必须要有此事件：{property}Changed
+    /// </summary>
+    [Parameter]
+    public EventCallback<DateTime> DateTimeChanged { get; set; }
+
+
+    private async Task ChangeParentValue(ChangeEventArgs e)
+    {
+        var dateStr = e.Value.ToString();
+
+        //DateTime = DateTime.Parse(dateStr);
+        //await DateTimeChanged.InvokeAsync(DateTime);
+
+        await DateTimeChanged.InvokeAsync(DateTime.Parse(dateStr));
+    }
+}

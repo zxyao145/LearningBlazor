@@ -1,0 +1,19 @@
+﻿@page "/"
+
+
+<Component @bind-DateTime="_dateTime" />
+
+<div class="bg-light p-3">
+    <h3>parent</h3>
+    <button @onclick="OnClick">Parent: Change Time</button>
+    <p>Parent Component Value: @_dateTime</p>
+</div>
+
+@code{
+    private DateTime _dateTime = DateTime.Now;
+
+    private void OnClick()
+    {
+        _dateTime = DateTime.Now;
+    }
+}

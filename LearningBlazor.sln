@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponent", "C:\Users\zhang\source\repos\LearningBlazor\BlazorComponent\BlazorComponent.csproj", "{7903300D-4930-46A1-A87D-ED3891211703}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorInterop", "BlazorInterop\BlazorInterop.csproj", "{A651418F-93D9-444D-9CFA-B7C038B368A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLifecycle", "BlazorLifecycle\BlazorLifecycle.csproj", "{43EA3121-5BE7-4812-8F14-47C18843D403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLifecycle", "BlazorLifecycle\BlazorLifecycle.csproj", "{43EA3121-5BE7-4812-8F14-47C18843D403}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBind", "BlazorBind\BlazorBind.csproj", "{F0F3C530-300A-4AD9-B389-87BB40CB1309}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCrossComponentInterop", "BlazorCrossComponentInterop\BlazorCrossComponentInterop.csproj", "{6A47A1B8-69DC-4942-B02D-D146C9455185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,14 @@ Global
 		{43EA3121-5BE7-4812-8F14-47C18843D403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43EA3121-5BE7-4812-8F14-47C18843D403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43EA3121-5BE7-4812-8F14-47C18843D403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F3C530-300A-4AD9-B389-87BB40CB1309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F3C530-300A-4AD9-B389-87BB40CB1309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F3C530-300A-4AD9-B389-87BB40CB1309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F3C530-300A-4AD9-B389-87BB40CB1309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A47A1B8-69DC-4942-B02D-D146C9455185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A47A1B8-69DC-4942-B02D-D146C9455185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A47A1B8-69DC-4942-B02D-D146C9455185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A47A1B8-69DC-4942-B02D-D146C9455185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
