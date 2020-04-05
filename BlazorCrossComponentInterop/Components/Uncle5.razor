@@ -1,0 +1,51 @@
+﻿@implements IDisposable
+<div class="bg-primary jumbotron m-1 text-white">
+    <h3>Uncle5</h3>
+    <span>UpdateNephewValue</span>
+    <input class="w-75" @bind="NephewValue" />
+    <p>Update From Nephew: @_uncleValue</p>
+</div>
+
+@code {
+    private string _uncleValue;
+
+    private string _nephewValue = "I'm default nephew from uncle";
+
+    string NephewValue
+    {
+        get => _nephewValue;
+
+        set
+        {
+            _nephewValue = value;
+            Console.WriteLine("_nephewValue has changed");
+            EventDispatcher.Dispatch("UpdateNephew", _nephewValue);
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        EventDispatcher.AddAction("UpdateUncle", (value) =>
+        {
+            _uncleValue = (string)value;
+            StateHasChanged();
+        });
+
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            EventDispatcher.Dispatch("UpdateNephew", _nephewValue);
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+    public void Dispose()
+    {
+        EventDispatcher.RemoveAction("UpdateUncle");
+    }
+
+}

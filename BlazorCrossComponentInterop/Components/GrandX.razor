@@ -1,0 +1,26 @@
+﻿<h3>GrandX</h3>
+<p>GrandValue:@_grandValue</p>
+
+<CascadingValue Value="@_grandValue" Name="GrandValue">
+    <CascadingValue Value="@OnValueChanged" Name="OnChangeGrandValue">
+        <ParentX />
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+
+    private string _grandValue = "GrandValue";
+
+    private void CallValueChanged(string val)
+    {
+        _grandValue = val;
+        StateHasChanged();
+    }
+
+    private Action<string> OnValueChanged;
+    protected override void OnInitialized()
+    {
+        OnValueChanged = CallValueChanged;
+        base.OnInitialized();
+    }
+}

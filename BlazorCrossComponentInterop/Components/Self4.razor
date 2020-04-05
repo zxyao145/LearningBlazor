@@ -1,0 +1,24 @@
+﻿<div class="bg-white p-3" style="color: #000;">
+    <h3>Self4</h3>
+    <p>GrandValueModel-GrandValue: @CascadingModel.Value</p>
+    <button @onclick="ChangGrandValue">Chang GrandValue</button>
+</div>
+
+@code {
+
+    [CascadingParameter(Name = "GrandValue")]
+    CascadingModel<string> CascadingModel { get; set; }
+
+    void ChangGrandValue()
+    {
+        CascadingModel.Value = "I'm Form self:"
+            + DateTime.Now.ToString("HH:mm:ss");
+    }
+
+    protected override bool ShouldRender()
+    {
+        var result = base.ShouldRender();
+        Console.WriteLine("ShouldRender " + result);
+        return result;
+    }
+}

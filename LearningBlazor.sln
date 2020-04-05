@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponent", "C:\Users\zhang\source\repos\LearningBlazor\BlazorComponent\BlazorComponent.csproj", "{7903300D-4930-46A1-A87D-ED3891211703}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorInterop", "BlazorInterop\BlazorInterop.csproj", "{A651418F-93D9-444D-9CFA-B7C038B368A0}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLifecycle", "BlazorLifecycle\BlazorLifecycle.csproj", "{43EA3121-5BE7-4812-8F14-47C18843D403}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBind", "BlazorBind\BlazorBind.csproj", "{F0F3C530-300A-4AD9-B389-87BB40CB1309}"

@@ -1,0 +1,12 @@
+﻿<div class="bg-white p-3" style="color: #000;">
+    <h3>Self3</h3>
+    <p>GrandValue: @GrandValue</p>
+</div>
+
+@code {
+    /// <summary>
+    /// Name参数必须与Name带有CascadingValue组件的属性匹配，如果我们没有提到任何Name，则CascadingParameter中的变量类型与CascadingValue中的Value属性匹配。
+    /// </summary>
+    [CascadingParameter(Name = "GrandValue")]
+    string GrandValue { get; set; }
+}

@@ -1,0 +1,21 @@
+﻿<h3>Grand4</h3>
+<p>GrandValue:@_cascadingModel.Value</p>
+
+<CascadingValue Value="@_cascadingModel" Name="GrandValue">
+    <Parent4 />
+</CascadingValue>
+
+@code {
+    private CascadingModel<string> _cascadingModel = new CascadingModel<string>("GrandValue");
+
+    protected override void OnInitialized()
+    {
+        _cascadingModel.StateHasChanged += StateHasChanged;
+        base.OnInitialized();
+    }
+
+    private void ChangeGrandValue()
+    {
+        _cascadingModel.Value = DateTime.Now.ToString("o");
+    }
+}

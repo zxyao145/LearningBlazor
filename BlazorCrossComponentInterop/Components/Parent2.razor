@@ -1,0 +1,21 @@
+﻿<div class="bg-primary jumbotron  text-white">
+    <h3>Parent2</h3>
+    <p>@_value</p>
+    <Self2 Value="@_value" OnValueChanged="@OnValueChanged"></Self2>
+</div>
+@code{
+    private string _value = "I'm from Parent2";
+
+    private void OnValueChanged(string val)
+    {
+        _value = val;
+    }
+}
+
+@*<div class="bg-primary jumbotron  text-white">
+    <h3>Parent2</h3>
+    <Self2></Self2>
+</div>
+@code {
+
+}*@

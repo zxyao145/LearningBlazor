@@ -1,0 +1,50 @@
+﻿@implements IDisposable
+<div class="bg-white p-3" style="color: #000;">
+    <h3>Self5</h3>
+    <span>UpdateNephewValue</span>
+    <input class="w-75" @bind="UncleValue" />
+    <p>Update From Uncle: @_nephewValue</p>
+</div>
+
+@code {
+
+    private string _uncleValue = "I'm default uncleValue from nephew";
+
+    private string _nephewValue;
+
+    string UncleValue
+    {
+        get => _uncleValue;
+
+        set
+        {
+            _uncleValue = value;
+            EventDispatcher.Dispatch("UpdateUncle", _uncleValue);
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        EventDispatcher.AddAction("UpdateNephew", (value) =>
+        {
+            _nephewValue = (string)value;
+            StateHasChanged();
+        });
+
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            EventDispatcher.Dispatch("UpdateUncle", _uncleValue);
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+    public void Dispose()
+    {
+        EventDispatcher.RemoveAction("UpdateNephew");
+    }
+}

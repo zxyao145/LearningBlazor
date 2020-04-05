@@ -1,0 +1,21 @@
+﻿<div class="bg-white p-3" style="color: #000;">
+    <h3>Self1</h3>
+    <button @onclick="ChangeValue">ChangeValue</button>
+    <p>parent: @Value</p>
+</div>
+@code {
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnValueChanged { get; set; }
+
+    private async Task ChangeValue()
+    {
+        string newValue = DateTime.Now.ToString("o");
+        if (OnValueChanged.HasDelegate)
+        {
+            await OnValueChanged.InvokeAsync(newValue);
+        }
+    }
+}
