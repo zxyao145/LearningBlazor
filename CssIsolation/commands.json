@@ -1,0 +1,10 @@
+{
+  "commands": {
+    "scss": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c scss.bat"
+    }
+  },
+  "-vs-binding": { "BeforeBuild": [ "scss" ] }
+}

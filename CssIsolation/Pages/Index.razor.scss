@@ -1,0 +1,12 @@
+﻿.my-text {
+    border: 2px solid #000;
+    padding: 16px;
+
+    ::deep {
+           .my-text {
+            border: 2px solid #ff0000;
+            background-color: #000;
+            color: #fff;
+        }
+    }
+}

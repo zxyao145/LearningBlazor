@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "Index.razor.css",
+	"sources": [
+		"Index.razor.scss"
+	],
+	"sourcesContent": [
+		"﻿.my-text {\r\n    border: 2px solid #000;\r\n    padding: 16px;\r\n\r\n    ::deep {\r\n           .my-text {\r\n            border: 2px solid #ff0000;\r\n            background-color: #000;\r\n            color: #fff;\r\n        }\r\n    }\r\n}\r\n"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,QAAQ,AAAC,CACL,MAAM,CAAE,cAAc,CACtB,OAAO,CAAE,IAAI,CAShB,AAXD,AAKW,QALH,CAIJ,MAAM,CACC,QAAQ,AAAC,CACR,MAAM,CAAE,iBAAiB,CACzB,gBAAgB,CAAE,IAAI,CACtB,KAAK,CAAE,IAAI,CACd"
+}
