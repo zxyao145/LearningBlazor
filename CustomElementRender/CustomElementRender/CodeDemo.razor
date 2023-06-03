@@ -1,0 +1,27 @@
+﻿@inject HttpClient HttpClient
+@inject IJSRuntime JsRuntime
+
+<pre class="language-razor"><code>@_highlightSourceCode</code></pre>
+
+@code
+{
+    [Parameter, EditorRequired]
+    public string Src { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private MarkupString _highlightSourceCode;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var sourceCode = await HttpClient.GetStringAsync(Src);
+            var res = await JsRuntime.InvokeAsync<string>("highlight", sourceCode, "razor");
+            _highlightSourceCode = new MarkupString(res);
+            StateHasChanged();
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}
